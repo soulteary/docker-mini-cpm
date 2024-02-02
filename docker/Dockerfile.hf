@@ -1,0 +1,19 @@
+FROM nvcr.io/nvidia/pytorch:24.01-py3
+LABEL maintainer="soulteary@gmail.com"
+
+# setup Ubuntu and PyPi mirrors, refs: https://github.com/soulteary/docker-stable-diffusion-webui/blob/main/docker/Dockerfile.base
+ARG USE_CHINA_MIRROR=false
+RUN if [ "$USE_CHINA_MIRROR" = "true" ]; then \
+        pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple && \
+        sed -i 's/security.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list && \
+        sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list; \
+    fi
+
+# install dependencies
+RUN pip install transformers==4.37.2 gradio==4.16.0 accelerate==0.26.1
+
+# copy the source code
+WORKDIR /app
+COPY . /app/hf.py ./app.py
+EXPOSE 7860
+CMD ["python", "app.py"]
