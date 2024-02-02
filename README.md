@@ -1,5 +1,9 @@
 # Docker MiniCPM
 
+## 在线体验
+
+Colab: [https://colab.research.google.com/drive/1tJcfPyWGWA5HezO7GKLeyeIso0HyOc0l?usp=sharing](https://colab.research.google.com/drive/1tJcfPyWGWA5HezO7GKLeyeIso0HyOc0l?usp=sharing)
+
 ## 模型支持
 
 - [x] HuggingFace SFT / DPO (bf16/float32)
