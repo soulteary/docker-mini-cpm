@@ -1,6 +1,4 @@
-from typing import Dict
 from typing import List
-from typing import Tuple
 
 import argparse
 import gradio as gr
