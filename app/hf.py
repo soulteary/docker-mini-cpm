@@ -12,6 +12,9 @@ from transformers import (
     TextIteratorStreamer
 )
 
+import warnings
+warnings.filterwarnings('ignore', category=UserWarning, message='TypedStorage is deprecated')
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--model_path", type=str, default="")
 parser.add_argument("--torch_dtype", type=str, default="bfloat16")
